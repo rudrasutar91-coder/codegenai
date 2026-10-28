@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: whitesmokez;
+    }
+    .code{
+        background-color:rgb(194, 9, 194);
+        padding: 10px;
+        color:white;
+        text-align: center;
+        background-color: #C209C2;
+
+    
+    }
+    nav {
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+}
+
+nav a:hover {
+    color: yellow;
+}
+    .menu{
+        color:white;
+    }
+    .nav{
+        text-align: center;
+    }
+    .ai{
+        text-align: center;
+        
+    }
+    .box1 {
+    width: 500px;
+    height: 150px;
+    margin: 30px auto;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    text-align: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.box1 input[type="text"] {
+    width: 90%;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid gray;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.box1 input[type="button"] {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 16px;
+    background-color: rgb(194, 9, 194);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.box2 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.box2 h2 {
+    margin-bottom: 30px;
+}
+
+.card,
+.card1,
+.card2,
+.card3 {
+    width: 250px;
+    height: 110px;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* First 3 cards in one horizontal line */
+.card,
+.card1,
+.card2 {
+    display: inline-block;
+    margin: 10px;
+}
+
+/* 4th card below */
+.card3 {
+    margin: 20px auto;
+}
+.output {
+    width: 700px;
+    min-height: 200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 0 10px gray;
+    box-sizing: border-box;
+}
+
+.output pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+
+</style>
+<body>
+    <div class="code">
+        <h1><center>CODEGENAI</center></h1>
+        <section class="menu">
+    <nav>
+        <a href="login.html">LOGIN <span>|</span></a>
+            <a href="home.html">HOME <span>|</span></a>
+            <a href="genrete.html">GENERATOR <span>|</span></a>
+            <a href="histroy.html">HISTORY <span>|</span></a>
+            <a href="contact.html">CONTACT</a>
+    </nav>
+    </section>
+    </div>
+    <div class="ai">
+        
+        <h1 style="color: rgb(194, 9, 194)">AI CODE GENRETOR</h1>
+        <h3>Genrete Code From Your Ideas</h3>
+        <p>Write Your requirement and Genrete programming code esaliy and quickly</p>
+
+    </div>
+    <div class="box1">
+        <input type="text"id="userInput" placeholder=" Example:Create your program"x><br>
+        
+           
+         <input type="button" value="Submit" onclick="goToGenerator()">
+    </div>
+   
+    <section class="box2">
+
+        <h2>Supported Languages</h2>
+
+        <div class="card">
+            <h3>JAVA</h3>
+            <p>genrete java programs</p>
+        </div>
+
+        <div class="card1">
+            <h3>html</h3>
+            <p>genrete HTML code</p>
+        </div>
+
+        <div class="card2">
+            <h3>CSS</h3>
+            <p>genrete CSS code</p>
+</div>
+            
+        <div class="card3">
+            <h3>JAVA SCRIPT</h3>
+            <p>genrete java script programs</p>
+        </div>
+
+        <footer>rudrasutar91@gmail.com 2026 codeGen AI | BCA Mini project</footer>
+    </section>
+    <script>
+        
+
+function goToGenerator() {
+
+    let userInput = document.getElementById("userInput").value;
+
+    if (userInput.trim() === "") {
+        alert("Please enter your requirement!");
+        return;
+    }
+
+    localStorage.setItem("userRequirement", userInput);
+
+    window.location.href = "genrete.html";
+}
+
+    </script>
+    
+</body>
+</html>

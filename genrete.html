@@ -1,0 +1,500 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODEGENAI - AI Code Generator</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #c000c9;
+    color: white;
+    text-align: center;
+    padding: 22px 15px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffe1ff;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 38px 15px;
+}
+
+.hero h2 {
+    color: #b000b9;
+    font-size: 36px;
+    margin-bottom: 14px;
+}
+
+.hero h3 {
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Generator */
+.container {
+    max-width: 960px;
+    margin: 0 auto 30px;
+    padding: 28px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px #00000018;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+textarea, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 16px;
+    margin-bottom: 18px;
+    background: white;
+}
+
+textarea {
+    min-height: 135px;
+    resize: vertical;
+}
+
+textarea:focus, select:focus {
+    outline: 2px solid #c000c9;
+    border-color: #c000c9;
+}
+
+button {
+    background: #c000c9;
+    color: white;
+    border: none;
+    padding: 13px 21px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #92009b;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}
+
+/* Generated Code */
+.output {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto 30px;
+    padding: 22px;
+    background: #171717;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000020;
+}
+
+.output h2 {
+    color: #e879f9;
+    margin-bottom: 15px;
+}
+
+#status {
+    margin-bottom: 15px;
+    color: #ddd;
+    overflow-wrap: anywhere;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 12px;
+    color: #f3f3f3;
+    background: #222;
+    border-radius: 8px;
+}
+
+.output-actions {
+    margin-top: 15px;
+}
+
+/* Footer */
+footer {
+    background: #eee;
+    padding: 25px 12px;
+    text-align: center;
+    color: #555;
+    margin-top: 25px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 29px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .hero h2 {
+        font-size: 27px;
+    }
+
+    .hero h3 {
+        font-size: 18px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .container, .output {
+        margin-left: 12px;
+        margin-right: 12px;
+        padding: 20px;
+    }
+
+    button {
+        margin-bottom: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>CODEGENAI</h1>
+
+    <nav>
+        <a href="login.html">LOGIN</a>
+        <a href="home.html">HOME</a>
+        <a href="generate.html">GENERATOR</a>
+        <a href="histroy.html">HISTORY</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h2>AI CODE GENERATOR</h2>
+    <h3>Generate Code From Your Ideas</h3>
+    <p>Enter your requirement and generate programming code easily.</p>
+</section>
+
+<main>
+    <section class="container" id="generator">
+
+        <form id="generatorForm">
+
+            <label for="requirement">Enter Your Requirement</label>
+
+            <textarea
+                id="requirement"
+                placeholder="Example: Write a Python program to find the maximum number"
+                required></textarea>
+
+            <label for="language">Select Programming Language</label>
+
+            <select id="language">
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="C#">C#</option>
+            </select>
+
+            <button type="submit" id="generateBtn">
+                Generate Code
+            </button>
+
+            <button type="button" id="clearBtn">Clear</button>
+
+        </form>
+    </section>
+
+    <section class="output" id="output">
+
+        <h2>Generated Code</h2>
+
+        <p id="status" role="status" aria-live="polite">
+            Your generated code will appear here.
+        </p>
+
+        <pre><code id="codeResult"></code></pre>
+
+        <div class="output-actions">
+            <button type="button" id="copyBtn">Copy Code</button>
+            <button type="button" id="downloadBtn">Download Code</button>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>CODEGENAI | 2026 | BCA Mini Project</p>
+    <p style="margin-top:8px;">AI Powered Code Generation System</p>
+</footer>
+
+<script>
+const API_URL = "http://localhost:3000";
+
+const form = document.getElementById("generatorForm");
+const requirement = document.getElementById("requirement");
+const language = document.getElementById("language");
+const output = document.getElementById("output");
+const codeResult = document.getElementById("codeResult");
+const statusText = document.getElementById("status");
+
+const generateBtn = document.getElementById("generateBtn");
+const clearBtn = document.getElementById("clearBtn");
+const copyBtn = document.getElementById("copyBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+
+/* Load requirement from Home page */
+const savedRequirement = localStorage.getItem("userRequirement");
+
+if (savedRequirement) {
+    requirement.value = savedRequirement;
+    localStorage.removeItem("userRequirement");
+}
+
+/* GENERATE CODE */
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const prompt = requirement.value.trim();
+    const selectedLanguage = language.value;
+
+    if (!prompt) {
+        alert("Please enter your requirement.");
+        requirement.focus();
+        return;
+    }
+
+    output.style.display = "block";
+    codeResult.textContent = "";
+    statusText.textContent = "Generating code. Please wait...";
+
+    generateBtn.disabled = true;
+    generateBtn.textContent = "Generating...";
+
+    try {
+        const response = await fetch(`${API_URL}/api/generate`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                language: selectedLanguage,
+                userId: localStorage.getItem("userId")
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || "Code generation failed.");
+        }
+
+        if (typeof data.code !== "string" || !data.code.trim()) {
+            throw new Error("No generated code received from backend.");
+        }
+
+        codeResult.textContent = data.code;
+
+        statusText.textContent =
+            "Code generated successfully in " +
+            (data.language || selectedLanguage) + "!";
+
+    } catch (error) {
+        console.error("Generation error:", error);
+
+        statusText.textContent =
+            "Error: " + error.message +
+            " Please check Node.js and Ollama.";
+
+    } finally {
+        generateBtn.disabled = false;
+        generateBtn.textContent = "Generate Code";
+    }
+});
+
+/* CLEAR BUTTON */
+clearBtn.addEventListener("click", function() {
+    requirement.value = "";
+    language.selectedIndex = 0;
+    codeResult.textContent = "";
+    statusText.textContent = "";
+    output.style.display = "none";
+    requirement.focus();
+});
+
+/* COPY CODE BUTTON - FIXED */
+copyBtn.addEventListener("click", async function() {
+    const code = codeResult.textContent;
+
+    if (!code || !code.trim()) {
+        alert("No code available to copy. Generate code first.");
+        return;
+    }
+
+    copyBtn.disabled = true;
+    copyBtn.textContent = "Copying...";
+
+    try {
+        /* Modern clipboard API */
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(code);
+        } else {
+            /* Fallback for browsers where Clipboard API is unavailable */
+            const temp = document.createElement("textarea");
+
+            temp.value = code;
+            temp.setAttribute("readonly", "");
+            temp.style.position = "fixed";
+            temp.style.left = "-9999px";
+            temp.style.top = "0";
+            temp.style.opacity = "0";
+
+            document.body.appendChild(temp);
+
+            temp.focus();
+            temp.select();
+            temp.setSelectionRange(0, temp.value.length);
+
+            const copied = document.execCommand("copy");
+            temp.remove();
+
+            if (!copied) {
+                throw new Error("Automatic copy was blocked.");
+            }
+        }
+
+        statusText.textContent = "Code copied successfully!";
+
+    } catch (error) {
+        console.error("Copy error:", error);
+
+        /* Show code selected so the user can copy manually */
+        const range = document.createRange();
+        range.selectNodeContents(codeResult);
+
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        statusText.textContent =
+            "Automatic copy failed. Code selected; press Ctrl+C to copy.";
+
+    } finally {
+        copyBtn.disabled = false;
+        copyBtn.textContent = "Copy Code";
+    }
+});
+
+/* DOWNLOAD CODE BUTTON */
+downloadBtn.addEventListener("click", function() {
+    const code = codeResult.textContent;
+
+    if (!code || !code.trim()) {
+        alert("No code available to download.");
+        return;
+    }
+
+    const extensions = {
+        "Python": "py",
+        "Java": "java",
+        "C": "c",
+        "C++": "cpp",
+        "JavaScript": "js",
+        "C#": "cs"
+    };
+
+    const extension = extensions[language.value] || "txt";
+
+    const blob = new Blob([code], {
+        type: "text/plain;charset=utf-8"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "generated_code." + extension;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    /* Delay revocation to allow the download to start */
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    statusText.textContent = "Code downloaded successfully!";
+});
+</script>
+
+</body>
+</html>
+```

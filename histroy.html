@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODEGENAI - History</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f3ff;
+    color: #25213b;
+}
+
+.navbar {
+    background: #c000c8;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 15px;
+}
+
+.navbar a:hover {
+    color: #ffdf5d;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    color: #c000c8;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #777;
+}
+
+.btn {
+    border: none;
+    padding: 11px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.primary, .view-btn, .copy-btn {
+    background: #c000c8;
+    color: white;
+}
+
+.primary:hover, .view-btn:hover, .copy-btn:hover {
+    background: #8e0095;
+}
+
+.danger {
+    background: #ffe6e6;
+    color: #d62828;
+}
+
+.danger:hover {
+    background: #ffd0d0;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-card, .history-box {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px #00000008;
+    border: 1px solid #eee5ff;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.stat-card h2 {
+    font-size: 28px;
+    color: #c000c8;
+    overflow-wrap: anywhere;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.filters input, .filters select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background: white;
+    font-size: 14px;
+    outline-color: #c000c8;
+}
+
+.filters input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filters select {
+    min-width: 150px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+th {
+    background: #f1eaff;
+    color: #c000c8;
+    text-align: left;
+    padding: 15px;
+    font-size: 14px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background: #fcfaff;
+}
+
+.badge {
+    background: #eee5ff;
+    color: #c000c8;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    gap: 7px;
+}
+
+.small-btn {
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background: #ffe8e8;
+    color: #d62828;
+}
+
+.empty {
+    text-align: center;
+    padding: 35px 10px;
+    color: #888;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    font-size: 13px;
+}
+
+.status {
+    margin-bottom: 15px;
+    color: #777;
+    font-size: 14px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #00000080;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.modal-header h2 {
+    color: #c000c8;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.code-area {
+    background: #171526;
+    color: #e7e3ff;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    min-height: 150px;
+    margin: 15px 0;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media(max-width:700px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .navbar a {
+        margin: 0 7px;
+    }
+
+    .history-box {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">CODEGENAI</div>
+    <div>
+        <a href="home.html">Home</a>
+        <a href="genrete.html">Generator</a>
+        <a href="histroy.html">History</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="header">
+        <div>
+            <h1>Code History</h1>
+            <p>Manage your previously generated programs.</p>
+        </div>
+        <button class="btn danger" id="clearBtn">
+            Clear All History
+        </button>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Total Programs</h3>
+            <h2 id="totalCount">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Programming Languages</h3>
+            <h2 id="languageCount">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Latest Program</h3>
+            <h2 id="latestProgram" style="font-size:20px">None</h2>
+        </div>
+    </div>
+
+    <section class="history-box">
+
+        <div class="filters">
+            <input type="search" id="searchInput"
+                   placeholder="Search program name or code...">
+
+            <select id="languageFilter">
+                <option value="All">All Languages</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C">C</option>
+                <option value="HTML">HTML</option>
+                <option value="JavaScript">JavaScript</option>
+            </select>
+
+            <select id="sortFilter">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+            </select>
+        </div>
+
+        <p class="status" id="statusMessage">Loading history...</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program Name</th>
+                        <th>Language</th>
+                        <th>Date &amp; Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTable"></tbody>
+            </table>
+        </div>
+
+        <div class="empty" id="emptyMessage" hidden>
+            <h3>No History Found</h3>
+            <p>Generate a program to see it here.</p>
+            <br>
+            <a href="genrete.html">
+                <button class="btn primary">Generate New Code</button>
+            </a>
+        </div>
+
+    </section>
+</main>
+
+<footer class="footer">
+    © 2026 CODEGENAI | BCA Mini Project
+</footer>
+
+<div class="modal" id="codeModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Program Code</h2>
+            <button class="close-btn" id="closeModalBtn"
+                    aria-label="Close">&times;</button>
+        </div>
+
+        <p id="modalLanguage"></p>
+        <pre class="code-area" id="modalCode"></pre>
+
+        <div class="modal-actions">
+            <button class="btn primary" id="copyModalBtn">Copy Code</button>
+            <button class="btn danger" id="modalCloseBtn">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const API_URL = "http://localhost:3000/api/history";
+
+let historyData = [];
+
+const table = document.getElementById("historyTable");
+const statusMessage = document.getElementById("statusMessage");
+const emptyMessage = document.getElementById("emptyMessage");
+const totalCount = document.getElementById("totalCount");
+const languageCount = document.getElementById("languageCount");
+const latestProgram = document.getElementById("latestProgram");
+
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+async function loadHistory() {
+    statusMessage.textContent = "Loading history...";
+    table.innerHTML = "";
+
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("API error: " + response.status);
+        }
+
+        const result = await response.json();
+
+        console.log("History API Data:", result);
+
+        // API response array किंवा object असू शकतो
+        if (Array.isArray(result)) {
+            historyData = result;
+        } else if (Array.isArray(result.history)) {
+            historyData = result.history;
+        } else if (Array.isArray(result.data)) {
+            historyData = result.data;
+        } else {
+            throw new Error(
+                "API response मध्ये history array सापडली नाही."
+            );
+        }
+
+        renderHistory();
+
+    } catch (error) {
+        console.error("History Error:", error);
+        statusMessage.textContent =
+            "History load झाली नाही: " + error.message;
+        emptyMessage.hidden = true;
+    }
+}
+
+function renderHistory() {
+    const search = document.getElementById("searchInput")
+        .value.toLowerCase().trim();
+
+    const language = document.getElementById("languageFilter").value;
+    const sort = document.getElementById("sortFilter").value;
+
+    let filtered = historyData.filter(item => {
+        const title = String(
+            item.title || item.prompt || "Generated Code"
+        ).toLowerCase();
+
+        const code = String(
+            item.generated_code || item.code || ""
+        ).toLowerCase();
+
+        const itemLanguage = String(item.language || "");
+
+        return (
+            (title.includes(search) || code.includes(search)) &&
+            (language === "All" ||
+             itemLanguage.toLowerCase() === language.toLowerCase())
+        );
+    });
+
+    filtered.sort((a, b) => {
+        const dateA = new Date(a.created_at || 0).getTime();
+        const dateB = new Date(b.created_at || 0).getTime();
+
+        return sort === "newest"
+            ? dateB - dateA
+            : dateA - dateB;
+    });
+
+    totalCount.textContent = historyData.length;
+
+    languageCount.textContent = new Set(
+        historyData.map(item => item.language).filter(Boolean)
+    ).size;
+
+    latestProgram.textContent = historyData.length
+        ? (historyData[0].title ||
+           historyData[0].prompt ||
+           "Generated Code")
+        : "None";
+
+    if (filtered.length === 0) {
+        table.innerHTML = "";
+        emptyMessage.hidden = false;
+        statusMessage.textContent = "No history records found.";
+        return;
+    }
+
+    emptyMessage.hidden = true;
+    statusMessage.textContent =
+        "Showing " + filtered.length + " program(s).";
+
+    table.innerHTML = filtered.map((item, index) => {
+        const title = item.title || item.prompt || "Generated Code";
+        const language = item.language || "Unknown";
+        const date = item.created_at
+            ? new Date(item.created_at).toLocaleString()
+            : "N/A";
+
+        return `
+            <tr>
+                <td>${escapeHTML(title)}</td>
+                <td><span class="badge">${escapeHTML(language)}</span></td>
+                <td>${escapeHTML(date)}</td>
+                <td>
+                    <div class="actions">
+                        <button class="small-btn view-btn"
+                            data-action="view"
+                            data-index="${index}">
+                            View
+                        </button>
+                        <button class="small-btn copy-btn"
+                            data-action="copy"
+                            data-index="${index}">
+                            Copy
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join("");
+
+    // Buttons साठी filtered records जतन करा
+    window.visibleHistory = filtered;
+}
+
+table.addEventListener("click", async event => {
+    const button = event.target.closest("button[data-action]");
+    if (!button) return;
+
+    const item = window.visibleHistory?.[Number(button.dataset.index)];
+    if (!item) return;
+
+    const title = item.title || item.prompt || "Generated Code";
+    const code = item.generated_code || item.code || "";
+
+    if (button.dataset.action === "view") {
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalLanguage").textContent =
+            "Language: " + (item.language || "Unknown");
+        document.getElementById("modalCode").textContent =
+            code || "No code saved for this record.";
+
+        document.getElementById("codeModal").style.display = "flex";
+    }
+
+    if (button.dataset.action === "copy") {
+        try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = "Copied!";
+        } catch (error) {
+            alert("Copy failed. Code View करून manually copy कर.");
+        }
+    }
+});
+
+function closeModal() {
+    document.getElementById("codeModal").style.display = "none";
+}
+
+document.getElementById("closeModalBtn")
+    .addEventListener("click", closeModal);
+
+document.getElementById("modalCloseBtn")
+    .addEventListener("click", closeModal);
+
+document.getElementById("copyModalBtn")
+    .addEventListener("click", async () => {
+        const code = document.getElementById("modalCode").textContent;
+
+        try {
+            await navigator.clipboard.writeText(code);
+            alert("Code copied successfully!");
+        } catch (error) {
+            alert("Copy failed. Code manually select करून copy कर.");
+        }
+    });
+
+document.getElementById("searchInput")
+    .addEventListener("input", renderHistory);
+
+document.getElementById("languageFilter")
+    .addEventListener("change", renderHistory);
+
+document.getElementById("sortFilter")
+    .addEventListener("change", renderHistory);
+
+// Clear All History: database मधील data delete करण्यासाठी
+// backend DELETE endpoint तयार असेल तरच हा पर्याय वापर.
+document.getElementById("clearBtn").addEventListener("click", () => {
+    alert(
+        "History database मधून delete करण्यासाठी server.js मध्ये " +
+        "DELETE endpoint जोडणे आवश्यक आहे. Data सुरक्षित ठेवला आहे."
+    );
+});
+
+loadHistory();
+</script>
+
+
+</body>
+</html>

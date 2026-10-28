@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODEGENAI - Contact Us</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f3ff;
+    color: #25213b;
+}
+
+.navbar {
+    background: #c000c8;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 15px;
+}
+
+.navbar a:hover {
+    color: #ffdf5d;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.heading h1 {
+    color: #c000c8;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: #777;
+    line-height: 1.7;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 25px;
+}
+
+.contact-info,
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #00000008;
+    border: 1px solid #eee5ff;
+}
+
+.contact-info {
+    background: linear-gradient(145deg, #c000c8, #81008c);
+    color: white;
+}
+
+.contact-info h2,
+.contact-form h2 {
+    margin-bottom: 18px;
+}
+
+.contact-info > p {
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #f8eaff;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin: 25px 0;
+}
+
+.info-icon {
+    font-size: 23px;
+}
+
+.info-item h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.info-item p,
+.info-item a {
+    color: #f8eaff;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.info-item a {
+    text-decoration: none;
+}
+
+.contact-form h2 {
+    color: #c000c8;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #c000c8;
+    box-shadow: 0 0 0 3px #c000c815;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: #c000c8;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #8e0095;
+}
+
+#formMessage {
+    margin-top: 15px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: 45px;
+    text-align: center;
+    background: white;
+    padding: 22px;
+    color: #777;
+    font-size: 13px;
+}
+
+@media(max-width: 750px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .navbar a {
+        margin: 0 7px;
+    }
+
+    .heading h1 {
+        font-size: 29px;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">CODEGENAI</div>
+
+    <div>
+        <a href="home.html">Home</a>
+        <a href="genrete.html">Generator</a>
+        <a href="histroy.html">History</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section class="heading">
+        <h1>Contact Us</h1>
+        <p>
+            Have a question or suggestion?
+            Contact the CODEGENAI project team.
+        </p>
+    </section>
+
+    <section class="contact-wrapper">
+
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+
+            <p>
+                We welcome your feedback, suggestions
+                and questions about CODEGENAI.
+            </p>
+
+            <div class="info-item">
+                <span class="info-icon">📧</span>
+                <div>
+                    <h3>Email Address</h3>
+                    <p>
+                        <a href="mailto:rudrasutar91@gmail.com">
+                            rudrasutar91@gmail.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon">💻</span>
+                <div>
+                    <h3>Project Name</h3>
+                    <p>CODEGENAI - AI Code Generator</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon">🎓</span>
+                <div>
+                    <h3>Project Type</h3>
+                    <p>BCA Mini Project</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon">⚡</span>
+                <div>
+                    <h3>Our Goal</h3>
+                    <p>
+                        Generate beginner-friendly code
+                        using Artificial Intelligence.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+
+            <form id="contactForm">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name"
+                           placeholder="Enter your full name"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email"
+                           placeholder="Enter your email"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Technical Support">Technical Support</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Bug Report">Bug Report</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message"
+                              placeholder="Write your message here..."
+                              required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Send Message
+                </button>
+
+                <p id="formMessage" role="status"></p>
+
+            </form>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    © 2026 CODEGENAI | BCA Mini Project
+    <br><br>
+    Generate Code From Your Ideas
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener(
+    "submit",
+    async function(event) {
+        event.preventDefault();
+
+        const formMessage = document.getElementById("formMessage");
+
+        const contactData = {
+            name: document.getElementById("name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("message").value.trim()
+        };
+
+        if (!contactData.name ||
+            !contactData.email ||
+            !contactData.subject ||
+            !contactData.message) {
+            formMessage.style.color = "#d62828";
+            formMessage.textContent = "Please fill in all fields.";
+            return;
+        }
+
+        formMessage.style.color = "#777";
+        formMessage.textContent = "Sending message...";
+
+        try {
+            const response = await fetch(
+                "http://localhost:3000/api/contact",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(contactData)
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message || result.error ||
+                    "Unable to send message."
+                );
+            }
+
+            formMessage.style.color = "green";
+            formMessage.textContent =
+                result.message || "Message sent successfully!";
+
+            document.getElementById("contactForm").reset();
+
+        } catch (error) {
+            console.error("Contact Error:", error);
+            formMessage.style.color = "#d62828";
+            formMessage.textContent =
+                "Message could not be sent. Check your server and API.";
+        }
+    }
+);
+</script>
+
+</body>
+</html>

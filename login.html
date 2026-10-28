@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODEGENAI - Student Details</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #c000c8;
+            color: white;
+            text-align: center;
+            padding: 30px 15px 15px;
+            margin: 4px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 28px;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 4px 0;
+        }
+
+        nav a:hover {
+            color: #ffe2ff;
+            text-decoration: underline;
+        }
+
+        nav span {
+            margin-left: 10px;
+        }
+
+        /* Student Form */
+        .form-container {
+            width: 565px;
+            max-width: calc(100% - 30px);
+            margin: 32px auto;
+            padding: 43px 35px 35px;
+            background: linear-gradient(
+                135deg,
+                #c000c8,
+                #b900c5
+            );
+            border-radius: 15px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-size: 27px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-group label {
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #eeeeee;
+            border-radius: 10px;
+            background-color: white;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #762bff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+            padding: 14px;
+            background: linear-gradient(
+                100deg,
+                #6046e8,
+                #c000c8
+            );
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid white;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #8b00bd;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header {
+                padding: 25px 10px 15px;
+            }
+
+            header h1 {
+                font-size: 28px;
+                margin-bottom: 22px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            nav span {
+                margin-left: 5px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+                margin-top: 25px;
+            }
+
+            .form-container h2 {
+                font-size: 22px;
+            }
+
+            .form-group label {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Website Header -->
+    <header>
+        <h1>CODEGENAI</h1>
+
+        <nav>
+            <a href="login.html">LOGIN <span>|</span></a>
+            <a href="home.html">HOME <span>|</span></a>
+            <a href="generate.html">GENERATOR <span>|</span></a>
+            <a href="histroy.html">HISTORY <span>|</span></a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <!-- Student Details Form -->
+    <main>
+        <div class="form-container">
+
+            <h2>ENTER STUDENT DETAILS</h2>
+
+            <form id="studentForm">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <select id="course" name="course" required>
+                        <option value="">Select Course</option>
+                        <option value="BSc Computer Science">
+                            B.Sc. Computer Science
+                        </option>
+                        <option value="BCA">BCA</option>
+                        <option value="MSc Computer Science">
+                            M.Sc. Computer Science
+                        </option>
+                        <option value="MCA">MCA</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Submit
+                </button>
+
+            </form>
+        </div>
+    </main>
+
+    <script>
+       
+
+    document.getElementById("studentForm")
+        .addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const course = document.getElementById("course").value;
+            const email = document.getElementById("email").value.trim();
+
+            if (!name || !course || !email) {
+                alert("Please fill in all student details.");
+                return;
+            }
+
+            // Save student details temporarily
+            localStorage.setItem("studentName", name);
+            localStorage.setItem("studentCourse", course);
+            localStorage.setItem("studentEmail", email);
+
+            // Open Home Page
+            window.location.href = "home.html";
+        });
+</script>
+
+    
+
+</body>
+</html>
